@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+class fruit
+{
+    public:
+    void virtual taste()=0;
+};
+class apple:public fruit 
+{
+    void taste()
+    {
+        cout <<"this class has apple taste" << endl;
+    }
+};
+class grape:public fruit
+{
+    void taste()
+    {
+        cout <<"this class has grape taste" << endl;
+    }
+};
+
+
