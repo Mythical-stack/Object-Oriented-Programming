@@ -1,0 +1,1861 @@
+// QUESTION NO # 1
+
+/*Create 2 functions in the structure which get values from the user console and print
+values to the user console*/
+
+#include<iostream>
+using namespace std;
+struct get_values
+{
+	int first,second;
+	void fun(int a,int b)
+	{
+		first = a;
+		second = b;
+
+	}
+	void print_val(int a,int b)
+	{
+		cout <<"the first value is" << a << endl;
+		cout <<"the second value is " << b << endl;
+	}
+	
+};
+int main()
+{
+	get_values num;
+	int a,b;
+	cout <<"enter the first value" << endl;
+	cin >> a;
+	cout <<"enter the second value" << endl;
+	cin >> b;
+	num.fun(a,b);
+	num.print_val(a,b);
+	system ("pause");
+	return 0;
+}
+
+// QUESTION NO # 2
+
+#include<iostream>
+#include<string>
+using namespace std;
+struct data
+{
+	string fields1,fields2,fields3,fields4,fields5;
+	string name1,name2,name3,name4,name5;
+	string nameno1,nameno2,nameno3,nameno4,nameno5;
+	
+};
+int main()
+{
+	data app;
+	app.fields1 = "FIELD";
+	app.fields2 = "TITEL OF THE BOOK";
+	app.fields3 = "AUTHOR OF THE BOOK";
+	app.fields4 = "PUBLISHER";
+	app.fields5 = " RETIALS COST OF THE BOOK";
+	
+	app.name1 = "FILED DATA TYPE";
+	app.name2 = "string";
+	app.name3 = "string";
+	app.name4 = "string";
+	app.name5  = "floats" ;
+	
+	app.nameno1 = "FILED NAME";
+	app.nameno2 = " TITLE";
+	app.nameno3 = " AUTHOR";
+	app.nameno4 = "PUBLISHER";
+	app.nameno5 = "COST";
+	
+	cout << app.fields1 << "\t\t" <<  app.name1  << "\t\t"  <<  app.nameno1  <<  endl;  
+	cout << app.fields2 << "\t\t" <<  app.name2  << "\t\t"  <<  app.nameno2  << endl; 
+	cout << app.fields3 << "\t\t" <<  app.name3  << "\t\t"  <<  app.nameno3  <<  endl; 
+	cout << app.fields4 << "\t\t" <<  app.name4  << "\t\t"  <<  app.nameno4  << endl; 
+	cout << app.fields5 << "\t\t" <<  app.name5  << "\t\t"  <<  app.nameno5  << endl; 
+					
+				
+	system ("pause");
+	return 0;
+}
+
+
+// QUESTION NO # 3
+
+*/Write the Functions INSIDE the class object. 
+Set all the variables as private and  functions as  public. 
+   Tasks 1  ?
+  Create a class named ?
+  Car ?
+  having having properties such as,   ?
+   Engine size (as float)  ?
+    Body color (as string)  ? 
+	Mileage (as int)  And functionalities such as,  ? 
+	Show_mileage, show_body_color, Show_engine_size  ? 
+Add_mileage, set_Engine_size, set_body_color*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class car
+{
+	private:
+		float engine_size;
+		string body_colour;
+		int mileage;
+	public:
+		void set_value();
+		void get_value();
+	
+};
+void car::set_value()
+{
+	cout<<"ENTER THE COLOUR OF CAR ";
+	cin>>body_colour;
+	cout<<"ENTER THE ENGINE SIZE OF CAR ";
+	cin>>engine_size;
+	cout<<"ENTER THE MILEAGE OF CAR ";
+	cin>>mileage ;
+}
+
+void car::get_value()
+{
+	cout<<"THE COLOUR OF CRA IS "<<body_colour<<endl;
+	cout<<"THE ENGINE SIZE OF CAR IS "<<engine_size<<endl;
+	cout<<"THE MILEAGE OF CAR IS "<<mileage<<endl;
+}
+
+
+int main()
+{
+	car c;
+	c.set_value();
+	c.get_value();
+	
+	system("pause");
+	return 0;
+}
+
+// QUESTION NO # 4
+ 
+*/ Create a function named ?
+ counter? which should have one variable named ?
+ count? (as int) and it  should have 3 functions as,? 
+ initialize_counter (for setting initial value for count)?
+  increment_counter (for incrementing the count variable)  ? 
+Decrement_counter (for decrementing the count variable)   */
+
+#include<iostream>
+using namespace std;
+class counter{
+	private:
+		int count;
+		public:
+			
+			void initialize(int);
+			void increment();
+			void decrement();
+};
+
+	void counter :: initialize(int x){
+		count = x;
+		
+		
+	}
+	
+	void counter::increment(){
+		
+		cout<<"increment of counter is ";
+		count++;
+	}
+	
+	void counter ::decrement(){
+		cout<<"DECREMENT IS ";
+		count--;
+	}
+int main()
+{
+	counter c;
+	c.initialize( 5);
+	c.increment();
+	c.decrement();
+	system ("pause");
+	return 0;
+}
+
+// QUESTION NO # 5;
+
+/*Create any class with a constructor and destructor printing anything inside the constructor and
+destructor.*/
+
+#include<iostream>
+using namespace std;
+class shop
+{
+	private:
+		int rent;
+		int bills;
+		float price;
+		public:
+			shop();
+			void set_val();
+			void get_val();
+			~shop();
+};
+      shop::shop()
+      {
+      	rent = 10000;
+      	bills =5000;
+      	price = 12000;
+	  }
+	  
+	  void shop::set_val(){
+	  	cout<<"ENTER THE RENT OF SHOP ";
+	  	cin>>rent;
+	  	cout<<"ENTER THE BILL OF SHOP ";
+	  	cin>>bills;
+	  	cout<<"ENTER THE PRICE OF SHOP ";
+	  	cin>>price;
+	
+	  }
+	  void shop::get_val()
+	  {
+	  	cout<<"THE RENT OF SHOP IS "<<rent<<endl;
+	  	cout<<"TNE BILL OF SHOP IS "<<bills<<endl;
+	  	cout<<"THE PRICE OF SHOP IS "<<price <<endl;
+	  }
+	  
+	  shop::~shop()
+	  {
+	  	cout<<"DESTRUCTOR IS ..........."<<endl;
+	  }
+
+int main()
+{
+	shop s1;
+	s1.set_val();
+	s1.get_val();
+	system ("pause");
+	return 0;
+}
+
+// QUESTIO NO # 6
+
+*/Create a class named ​ “stack”​ which should have one static variable named ​ “names”​ (as static
+string array) and it should have 3 functions as,
+○ push (for add a string to the names array)
+○ pop (for removing last added string from the names array)
+○ get (to print the last added name)*/
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+static string array[5];
+class stack
+{
+	public:
+	//static string array[3];
+		void push();
+		void pop();
+		void get();
+};
+
+
+void stack::push()
+{
+	cout <<"Enter the names in the arrays" << endl;
+	for (int i=0;i<4;i++)
+	{
+		cin >> array[i] ;
+	}
+	cout << " -----------------------------------------------------------------" << endl;
+}
+
+
+void stack::pop()
+{
+	cout << "for removing the last array\t" << endl;
+	for (int i=0;i<3;i++)
+	{
+		cout  << array[i]  << endl;
+	}
+	cout <<"-----------------------------------------------------------------------" << endl;
+}
+
+
+void stack::get()
+{
+	cout <<"the last added array in the string is\t " << array[3] << endl;
+	cout <<"-----------------------------------------------------------------------------" << endl;
+}
+
+
+int main()
+{
+	stack var;
+	var.push();
+	var.pop();
+	var.get();
+	system ("pause");
+	return 0;
+}
+
+
+// QUESTIO NO # 7
+
+/*Create a Class called employee that contains these members: an employee number (type int), employee
+name (type string), employee phone numbers (an int array of size=4), employee age (type int) and the
+employees compensation (in dollars; type float). Include the following member functions for an
+employee:
+? Default constructor
+? Constructor with parameters
+? Copy constructor
+? Destructor
+? Set function for each data member
+? Print function for each data member
+? Update function for each data member
+Ask the user to fill in the data for an array of three employees and then display the information for each
+employee on console.*/
+
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+class Employee{
+	private:
+		int employee_no;
+		string name;
+		int phone_no[4];
+		int age;
+		float payment;
+		
+	public:
+		Employee();
+		Employee(int x , string n , int c , int a , float p );
+		Employee(Employee &value);
+		void set_information();
+		void print_information();
+		void update_information();
+		~Employee();
+};
+
+		Employee::Employee(){
+		
+			for(int i=0 ; i<3 ; i++)
+			{
+				cout<<"enter the value for employee number ";
+				cin>>employee_no;
+				cout<<"ENTER THE NAME OF EMPLOYEE IS ";
+				cin>>name;
+				cout<<"ENTER THE CONTACT OF EMPLOYEE ";
+				cin>>phone_no[i];
+				cout<<"ENTER THE AGE OF EMPLOYEE IS ";
+				cin>>age;
+				cout<<"ENTER THE PAYMENT OF EMPLOYEE IS ";
+				cin>>payment;
+				cout<<endl;
+			}
+		}
+		
+		Employee::Employee(int x , string n , int c , int a , float p)
+		{
+			employee_no = x;
+			name = "n";
+			phone_no[4] = c;
+			age = a;
+			payment =p;
+			
+				for(int i=0 ; i<3 ; i++)
+			{
+				cout<<"enter the value for employee number ";
+				cin>>x;
+				cout<<"ENTER THE NAME OF EMPLOYEE IS ";
+				cin>>n;
+				cout<<"ENTER THE CONTACT OF EMPLOYEE ";
+				cin>>c;
+				cout<<"ENTER THE AGE OF EMPLOYEE IS ";
+				cin>>a;
+				cout<<"ENTER THE PAYMENT OF EMPLOYEE IS ";
+				cin>>p;
+				
+					cout<<endl;
+			}
+			
+		}
+		
+		Employee::Employee(Employee &value)
+		{
+			employee_no = value.employee_no;
+			employee_no= value.age;
+			employee_no= value.phone_no[4];
+			employee_no= value.payment;
+		}
+		
+		
+		void Employee::set_information(){
+			
+			for(int i=0; i<3; i++)
+			{
+					cout<<"ENTER THE VALUE FOR EMPLOYEE NUMBER ";
+				cin>>employee_no;
+				cout<<"ENTER THE NAME OF EMPLOYEE IS ";
+				cin>>name;
+				cout<<"ENTER THE CONTACT OF EMPLOYEE ";
+				cin>>phone_no[i];
+				cout<<"ENTER THE AGE OF EMPLOYEE IS ";
+				cin>>age;
+				cout<<"ENTER THE PAYMENT OF EMPLOYEE IS ";
+				cin>>payment;
+				
+					cout<<endl;
+			}
+			
+		
+		}
+		
+		void Employee::print_information(){
+			
+			for(int i=0 ; i<3 ; i++)
+			{
+				
+			cout<<"EMPLOYEE NUMBER IS ... "<<employee_no<<endl;
+			cout<<"EMPLOYEE NAME IS .... "<<name<<endl;
+			cout<<"CONTACT OF EMPLOYEE IS .. "<<phone_no<<endl;
+			cout<<"AGE OF EMPLOYEE IS ... "<<age<<endl;
+			cout<<"PAYMENT OF EMPLOYEE IS ...."<<payment<<endl;
+			
+				cout<<endl;
+			}
+		}
+		
+		 void Employee::update_information()
+		 {
+		 	for(int i=0 ; i<3 ; i++)
+			{
+				cout<<"enter the value for employee number ";
+				cin>>employee_no;
+				cout<<"ENTER THE NAME OF EMPLOYEE IS ";
+				cin>>name;
+				cout<<"ENTER THE CONTACT OF EMPLOYEE ";
+				cin>>phone_no[i];
+				cout<<"ENTER THE AGE OF EMPLOYEE IS ";
+				cin>>age;
+				cout<<"ENTER THE PAYMENT OF EMPLOYEE IS ";
+				cin>>payment;
+					cout<<endl;
+			}
+		 	
+		 }
+		 
+		 Employee::~Employee()
+		 {
+		 	cout<<"destructor iss.......";
+		 }
+int main(){
+	
+	Employee e1;
+	cout<<"SET INFORMATION OF EMPLOYEE IS .  ............  "<<endl;
+	e1.set_information();
+	cout<<endl;
+	cout<<"get INFORMATION OF EMPLOYEE IS .  ............  "<<endl;
+	e1.print_information();
+	cout<<endl;
+	cout<<"update INFORMATION OF EMPLOYEE IS .  ............  "<<endl;
+	e1.update_information();
+	return 0;
+}
+
+// QUESTION NO # 8
+
+Create a “DateOfBirth” class which stores variables “year”, “month” and “day” and prints it (eg
+01-01-2020).
+Create a class named “Person” which stores variables “Name”, “Education” and a “DateOfBirth”
+instance and it should have a print function which should run the print function of DateOfBirth
+class. (eg Mr.XYZ has done BS ComputerSc and was born on: 01-01-2020).*/
+			
+/*#include<iostream>
+#include<string>
+using namespace std;
+class Date_of_birth{
+	private:
+		int date ;
+		int month;
+		int year;
+	
+	public:
+		Date_of_birth()
+		{
+			date =0 ; 
+			month =0;
+			year =0;
+		}
+		void set_value()
+		{
+			cout<<"ENTER THE DAY OF DATE OF BIRTH  \t";
+			cin>>date;
+			cout<<"ENTER THE MONTH OF DATE OF BIRTH  \t";
+			cin>>month;
+			cout<<"ENTER THE YEAR OF DATE OF BIRTH  \t";
+			cin>>year;
+		}
+		
+		void print_value()
+		{
+			cout<<"DATE OF BIRTH IS \t"<<endl;
+			cout<<date<<" / "<<month <<" / "<<year<<endl;
+		}
+		~Date_of_birth()
+		{
+			cout<<"CALL THE DESTRUCTOR \t "<<endl;
+		}
+};
+
+
+class Person{
+	private:
+		string name;
+		string education;
+		Date_of_birth D;
+	
+	public:
+		Person()
+		{
+			name = "NULL";
+			education = "NULL";
+		
+		}
+		
+		void set()
+		{
+			cout<<"ENTER THE NAME \t";
+			cin>>name;
+			cout<<"ENTER THE EDUCATION \t";
+			cin>>education;
+			D.set_value();
+		}
+		
+		void print()
+		{
+			cout<<"Mr. "<<name<<" has done "<<education<<"and was born on ";
+				D.print_value();
+		
+			
+		}
+		~Person()
+		{
+			cout<<"CALL THE DESTRUCTOR \t "<<endl;
+		}
+};
+int main()
+{
+	Person P;
+	cout<<"--------------ENTER THE INFORMATION ------------------"<<endl;
+	P.set();
+	cout<<endl;
+	cout<<"-------------------INFORMATION IS ------------------------"<<endl;
+	P.print();
+	return 0;
+}
+
+// QUESTION NO # 9
+
+
+/*Create two classes “Pen” and “Color” then use “Color” class inside “Pen” class and print the
+values.
+Color class should have a variable named “color” (string) and a print function.
+Pen class should have a variable named “BrandName” (string), instance of a “Color” class and
+print function which calls the print function of Color class.*/
+				
+#include<iostream>
+#include<string>
+using namespace std;
+class Color{
+	private:
+		string name;
+	public:
+		color()
+		{
+			name =" NULL";
+		}
+		
+		void set()
+		{
+			cout<<"ENTER THE NAME  OF COLOR   \t";
+			cin>>name;
+		}
+		
+	void print()
+		{
+			cout<<"NAME OF COLOR IS \t"<<name;
+		}
+		~Color()
+		{
+			cout<<"CALL THE DESTRUCTOR \t "<<endl;
+		}
+};
+
+class Pen{
+	private:
+		string brand_name;
+		Color C;
+	public:
+		Pen()
+	{
+		brand_name = "NULL";
+	}
+	
+	void set_value()
+	{
+		C.set();
+		cout<<"ENTER THE BRAND  OF COLOR IS \t";
+		cin>>brand_name;
+	}
+	
+	void print_value()
+	{
+		C.print();
+		cout<<endl;
+		cout<<" COLOR BRAND IS \t "<<brand_name<<endl;
+	}
+	~Pen()
+		{
+			cout<<"CALL THE DESTRUCTOR \t "<<endl;
+		}
+};
+int main()
+{
+	Pen *P;
+	P = new Pen;
+	cout<<"-------------------SET THE INFORMATION OF COLOR------------------"<<endl;
+	P->set_value();
+	cout<<endl;
+	cout<<"---------------------GET THE INFORMATION OF COLOR IS -------------------"<<endl;
+	P->print_value();
+	
+	delete Pen;
+	return 0;
+}
+
+// QUESTION NO # 10
+
+/*Create two classes “Pen” and “Color” then use the “Pen” class as a parent class and create a
+“Color” class as the child.
+● Pen class should have a variable named “BrandName” (string).
+● Color class should have a variable named “color” (string) and a print function which prints
+“BrandName” from parent and color e.g. ”This is a Dollar pen and its color is blue”.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class pen
+{
+    protected:
+    string brandname;
+    public:
+    void set_value()
+    {
+        cout <<"enter the brandname of pen" << endl;
+        cin >> brandname;
+    }
+};
+class color:public pen
+{
+    protected:
+    string c;
+    public:
+    void set()
+    {
+    cout <<"enter the colour of the pen" << endl;
+    cin >> c;
+    }
+    void print()
+    {
+        cout <<"the brand of pen is " << brandname << "\t" << "and its color is \t" << c << endl;
+    }
+};
+int main()
+{
+    color obj;
+    obj.set_value();
+    obj.set();
+    obj.print();
+    return 0;
+}
+
+// QUESTION NO # 11
+
+/*Suppose there is a class name “Fruit” and it has a function named Taste.
+● Now create classes named “Apple”, “Pomegranate” and “Grapes” which should inherit Fruit
+class.
+● Each child class should have variables named fruite_color and fruit_name.
+● Child class should have a function named print_name_color to print the fruit color and name.
+● From the instance of each child class print fruit_color and taste e.g. “Apple is red and it is
+sweet”.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class fruit
+{
+    public:
+    void taste()
+    {
+        cout << "it is sweet" << endl;
+    }
+};
+class apple:public fruit
+{
+    protected:
+    string fruit_color;
+    string fruit_name;
+    public:
+    void set()
+    {
+        cout <<"enter the fruit color" << endl;
+        cin >> fruit_color;
+        cout <<"Enter the fruit name" << endl;
+        cin >> fruit_name ;
+    }
+    void print()
+    {
+        cout <<"fruit color" << fruit_color << endl;
+        cout <<"fruit name is " << fruit_name << endl;
+    }
+};
+class pomegranate:public fruit
+{
+    protected:
+    string fruit_color;
+    string fruit_name;
+    public:
+    void set_value()
+    {
+        cout <<"enter the fruit color" << endl;
+        cin >> fruit_color;
+        cout <<"Enter the fruit name" << endl;
+        cin >> fruit_name ;
+    }
+    void show()
+    {
+        cout <<"fruit color" << fruit_color << endl;
+        cout <<"fruit name is " << fruit_name << endl;
+    }
+};
+class grape:public fruit
+{
+     protected:
+    string fruit_color;
+    string fruit_name;
+    public:
+    void set_value()
+    {
+        cout <<"enter the fruit color" << endl;
+        cin >> fruit_color;
+        cout <<"Enter the fruit name" << endl;
+        cin >> fruit_name ;
+    }
+    void show()
+    {
+        cout <<"fruit color" << fruit_color << endl;
+        cout <<"fruit name is " << fruit_name << endl;
+    }
+};
+int main()
+{
+    fruit abc;
+    apple x;
+    x.set();
+    x.print();
+    abc.taste();
+    pomegranate a;
+    a.set_value();
+    a.show();
+    abc.taste();
+    grape b;
+    b.set_value();
+    b.show();
+    abc.taste();
+    return 0;
+}
+
+
+// QUESTION NO # 12
+
+/*Develop the classes necessary to represent a restaurant. At a minimum, the class must support
+properties for the restaurant name, cuisine type, seating capacity, and signature recipe. The
+recipe must be a class. Develop a small program that demonstrates the use of these classes, but
+it need not be interactive.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class resturant
+{
+    protected:
+    string res_name;
+    string cuisine_type;
+    int seating_capacity;
+    string recipe_res;
+    public:
+    resturant()
+    {
+        res_name="NULL";
+        cuisine_type="NULL";
+        seating_capacity=0;
+        recipe_res="NULL";
+    }
+    void set()
+    {
+        cout <<"enter the resturant name" << endl;
+        cin >> res_name;
+        cout <<"enter the cusine type of the resturant" << endl;
+        cin >> cuisine_type;
+        cout <<"enter the seating capacity of the resturant" << endl;
+        cin >> seating_capacity;
+    }
+    void get()
+    {
+        cout <<"the resturant name " << res_name << endl;
+        cout <<"the cusine type of the resturant " << cuisine_type << endl;
+        cout <<"the seating capacity of the resturant" << seating_capacity << endl;
+    }
+    ~resturant()
+    {
+        cout <<"call the destructor" << endl;
+    }
+};
+class recipe:public resturant
+{
+    public:
+    void set_value()
+    {
+        cout <<"Enter the recipe of the resturant" << endl;
+        cin >>  recipe_res;
+    }
+    void get_value()
+    {
+        cout <<"the recipe of the resturant" << endl;
+        cout << recipe_res;
+    }
+};
+int main()
+{
+    recipe obj;
+    obj.set();
+    obj.get();
+    obj.set_value();
+    obj.get_value();
+    return 0;
+}
+
+// QUESTION NO # 13
+
+/*● Create a class “Tyre” with variables “brandName” and “size”.
+● Create another class “Engine” with variables “engine volume”.
+● Create a class named “Bike” which inherits Tyre and Engine and print the bike’s specifications.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class tyre
+{
+    protected:
+    string brandname;
+    int size;
+    public:
+    void set()
+    {
+        cout <<"enter the brandname" << endl;
+        cin >> brandname;
+        cout <<"enter the size " << endl;
+        cin >> size;
+    }
+    void get()
+    {
+        cout << "brandname " << brandname << endl;
+        cout << "size" << size << endl;
+    }
+};
+class engine
+{
+    protected:
+    string engine_name;
+    public:
+    void set()
+    {
+        cout <<"enter the engine name " << endl;
+        cin >> engine_name;
+    }
+    void get()
+    {
+        cout <<"the engine name is" << engine_name << endl;
+    }
+};
+class bike:public tyre,public engine
+{
+    public:
+    void set()
+    {
+        tyre::set();
+        engine::set();
+    }
+    void get()
+    {
+        tyre::get();
+        engine::get();
+    }
+};
+int main()
+{
+    bike b;
+    b.set();
+    b.get();
+    return 0;
+}
+
+// QUESTION NO # 13
+
+/*Suppose there is a bank which holds the next of kin information of every customer. Now each Customer
+should be a class with some balance variable. The next of kin should also be a class inheriting the
+Customer balance with 5% tax deducted.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class bank
+{
+    protected:
+    string name;
+    int money;
+    bank()
+    {
+        name="NULL";
+        money=0;
+    }
+    void set_value()
+    {
+        cout <<"Enter the name of the customer" << endl;
+        cin >> name;
+        cout <<"enter the money of the customer" << endl;
+        cin >> money;
+    }
+    void get_value()
+    {
+        cout <<"the names of the customer" << name << endl;
+        cout <<"the money of the customer" << money << endl;
+    }
+    ~bank(){}
+};
+class customer:public bank
+{
+    private:
+    double balance;
+    public:
+    void set()
+    {
+        bank::set_value();
+        balance = (5/100)*money;
+    }
+    void get()
+    {
+        bank::get_value();
+        cout << "the tax reduced by 5% " << balance << endl;
+    }
+};
+int main()
+{
+    customer c;
+    c.set();
+    c.get();
+    return 0;
+}
+
+// QUESTION NO # 14
+
+/*As the Figure above suggests create a class named shape which have derived classes
+of 2d shapes and 3d shapes which again have derived classes circle, square, cude, and
+pyramid. Now each class should have a method named “area” and it will have to
+implement the formula of area different for each class (shape, 2dshape, and 3d shape
+should have empty function i.e. virtual void area(){}).*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class shape
+{
+    public:
+    virtual void area()
+    {}
+};
+class shape_2D:public shape
+{
+    public:
+    virtual void area()
+    {}
+};
+class shape_3D:public shape
+{
+    public:
+    virtual void area()
+    {}
+};
+class circle:public shape_2D
+{
+    protected:
+    float r;
+    public:
+    void area()
+    {
+        cout <<"enter the radius" << endl;
+        cin >> r;
+
+        cout <<"the circle of the area is " << (3.14)*r*r << endl;
+    }
+};
+class square:public shape_2D
+{
+    protected:
+    int lenght;
+    public:
+    void area()
+    {
+        cout <<"enter the lenght of the area" << endl;
+        cin >> lenght;
+
+        cout <<"the square of the area" << (lenght*lenght) << endl;
+    }
+};
+class cube:public shape_3D
+{
+    protected:
+    int len;
+    public:
+    void area()
+    {
+        cout <<"enter the lenght of the cube" << endl;
+        cin >> len;
+
+        cout <<"the cube of the area is " << (len*len*len) << endl;
+    }
+};
+class pyramid:public shape_3D
+{
+    protected:
+    int l,w,h;
+    float result;
+    public:
+    void area()
+    {
+        cout << "Enter the lenght" << endl;
+        cin >> l;
+        cout <<"Enter the width" << endl;
+        cin >> w;
+        cout << "enter the height" << endl;
+        cin >> h;
+        result = l*w*h/3;
+        cout <<"the pyramid of the area is" << result << endl;
+    }
+};
+int main()
+{
+    shape_2D *s;
+    circle c;
+    s=&c;
+    s->area();
+    cout << endl;
+
+    square s1;
+    s=&s1;
+    s->area();
+    cout << endl;
+
+    cube c1;
+    shape_3D *s2;
+    s2=&c1;
+    s2->area();
+    cout << endl;
+
+    pyramid p1;
+    shape_3D *s3;
+    s3=&p1;
+    s3->area(); 
+    cout << endl;
+    return 0;
+}
+
+// QUESTION NO # 15
+
+/*As the Figure above suggests, create a class named shape which has derived
+classes of 2d shapes and 3d shapes which again has derived classes circle, square,
+cude, and pyramid. The overridden virtual method/function should be named “defined”
+e.g. “I am square and I have 4 sides.”*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class shape
+{
+    public:
+    virtual void define()
+    {
+    cout <<"i am shape\t" << endl;
+    }
+};
+class shape_2D:public shape
+{
+    public:
+    virtual void define()
+    {
+        cout <<"2D shape is --- " << endl;
+    }
+};
+class shape_3D:public shape
+{
+    public:
+    virtual void define()
+    {
+        cout << "i am 3D shape is ---" << endl;
+    }
+};
+class circle:public shape_2D
+{
+    public:
+    void define()
+    {
+        cout <<"i am circle \t" << endl;
+    }
+};
+class square:public shape_2D
+{
+    public:
+    void define()
+    {
+        cout <<"i am square and i have 4 sides" << endl;
+    }
+};
+class cude:public shape_3D
+{
+    public:
+    void define()
+    {
+        cout <<" i am cude and i have 3 sides" << endl;
+    }
+};
+class pyramid:public shape_3D
+{
+    public:
+    void define()
+    {
+        cout <<" i am pyramid" << endl;
+    }
+};
+int main()
+{
+    shape_2D *s;
+    circle c;
+    s=&c;
+    s->define();
+    cout << endl;
+
+    square sq;
+    s=&sq;
+    s->define();
+    cout <<endl;
+
+    shape_3D *s3;
+    cude c1;
+    s3=&c1;
+    s3->define();
+
+    pyramid p1;
+    s3=&p1;
+    s3->define();
+
+    return 0;
+}
+
+// QUESTION NO # 16
+
+/*Create a class named Fruit with a pure virtual function
+named taste. Inherit a class Fruit class named apple, grape, and strawberry
+implementing the virtual function. Also create class instances and call taste
+functions.
+● Create fruit pointer and with the help of polymorphism call the taste functions of
+its childs.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class fruit
+{
+    public:
+    virtual void taste()=0;
+};
+class apple:public fruit
+{
+    public:
+    void taste()
+    {
+        cout <<"this class has apple taste" << endl;
+    }
+};
+class grape:public fruit
+{
+    public:
+    void taste()
+    {
+        cout <<"this class has grape taste" << endl;
+    }
+};
+class strawberry:public fruit
+{
+    public:
+    void taste()
+    {
+        cout <<"this class has strawberry taste" << endl;
+    }
+};
+int main()
+{
+    apple a;
+    grape g;
+    strawberry s;
+    fruit *f;
+    f=&a;
+    f->taste();
+    f=&g;
+    f->taste();
+    f=&s;
+    f->taste();
+    return 0;
+}
+
+// QUESTION NO # 17
+
+/*Create a class named shape which has derived classes of circle, square, cube,
+and triangle. The pure virtual method/function should be named “area” and each
+class derived class should have its own implementation of the area function.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class shape
+{
+    public:
+    virtual void area()=0;
+};
+class circle:public shape
+{
+    public:
+    void area()
+    {
+        int r;
+        float result;
+        cout <<"enter the radius " << endl;
+        cin >> r;
+        result=(3.14)*r*r;
+        cout <<"the circle of the area is" << result << endl;
+    }
+};
+class square:public shape
+{
+    public:
+    void area()
+    {
+        int len;
+        cout <<"enter the lenght " << endl;
+        cin >> len;
+        cout << "square of the area is" << len*len << endl;
+    }
+};
+class cude:public shape
+{
+    public:
+    void area()
+    {
+        int lenght;
+        cout <<"enter the  lenght " << endl;
+        cin >> lenght;
+        cout <<"the cude of the area is" << lenght*lenght*lenght << endl;
+    }
+};
+class pyramid:public shape
+{
+    public:
+    void area()
+    {
+        int l,w,h;
+        cout <<"Enter the lenght" << endl;
+        cin >> l;
+        cout <<"enter the width" << endl;
+        cin >> w;
+        cout <<"enter the height" << endl;
+        cin >> h;
+        cout <<"the pyramid of the area" << l*w*h/3 << endl;
+    }
+};
+int main()
+{
+    shape *s;
+    circle c;
+    square s1;
+    cude c1;
+    pyramid p;
+    s=&c;
+    s->area();
+    s=&c1;
+    s->area();
+    s=&c1;
+    s->area();
+    s=&p;
+    s->area();
+
+    return 0;
+
+}
+
+// QUESTION NO # 18
+
+/*Create a class named Fruit with a pure virtual function
+named taste. Inherit a class Fruit class named apple, grape, and strawberry
+implementing the virtual function. Also create class instances and call taste
+functions.
+● Create fruit pointer and with the help of polymorphism call the taste functions of
+its childs.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class fruit
+{
+    public:
+    virtual void taste()=0;
+};
+class apple:public fruit
+{
+    void taste()
+    {
+      cout <<"this class has apple taste" << endl;
+    }
+};
+class grape:public fruit
+{
+    void taste()
+    {
+        cout <<"this class has grape taste" << endl;
+    }
+};
+class straberry:public fruit
+{
+    void taste()
+    {
+        cout <<"this class has straberry taste" << endl;
+    }
+};
+int main()
+{
+    apple a;
+    grape g;
+    straberry s;
+    fruit *f;
+    f=&s;
+    f->taste();
+    f=&a;
+    f->taste();
+    f=&g;
+    f->taste();
+
+    return 0;
+}
+
+
+// QUESTION NO # 19
+
+/*Create a class named shape which has derived classes of circle, square, cube,
+and triangle. The pure virtual method/function should be named “area” and each
+class derived class should have its own implementation of the area function.*/
+
+#include<iostream>
+using namespace std;
+class shape
+{
+    public:
+    // pure virtual function
+    virtual void area()=0;
+};
+class circle:public shape
+{
+    void area()
+    {
+        int r;
+        cout <<"Enter the radius" << endl;
+        cin >> r;
+        cout <<"the circle of the area" << (3.14)*r*r << endl;
+    }
+};
+class square:public shape
+{
+    void area()
+    {
+        int len;
+        cout <<"Enter the lenght of the area" << endl;
+        cin >> len;
+        cout <<"the square of the area is" << len*len << endl;
+    }
+};
+class cube:public shape
+{
+    void area()
+    {
+        int l;
+        cout <<"enter the lenght of the area" << endl;
+        cin >> l;
+        cout <<"the cube of the area is " << l*l*l << endl;
+    }
+};
+class triangle:public shape
+{
+    void area()
+    {
+        int h,b;
+        cout <<"Enter the height " << endl;
+        cin >> h;
+        cout <<"enter the base " << endl;
+        cin >> b;
+        cout <<"the triangle of the area" << h*b/2 << endl;
+    }
+};
+int main()
+{
+    circle c1;
+    square s1;
+    cube c2;
+    triangle t1;
+    shape *p;
+    p=&c1;
+    p->area();
+    p=&s1;
+    p->area();
+    p=&c2;
+    p->area();
+    p=&t1;
+    p->area();
+    return 0;
+}
+
+
+// QUESTION NO # 20
+
+/*Create a class named Animal with a pure virtual function named habitat. It
+should have derived classes named cat, camel, fish, and penguin. Create
+instances of each derived/inherited class and call the habitat function.*/
+
+#include<iostream>
+using namespace std;
+class animal
+{
+    public:
+    virtual void habitat()=0;
+};
+class cat:public animal
+{
+    void habitat()
+    {
+        cout <<"i am cat" << endl;
+    }
+};
+class camel: public animal
+{
+    void habitat()
+    {
+        cout <<"i am camel " << endl;
+    }
+};
+class fish:public animal
+{
+    void habitat()
+    {
+        cout <<"i am fish" << endl;
+    }
+};
+class penguin:public animal
+{
+    void habitat()
+    {
+        cout <<"i am penguin" << endl;
+    }
+};
+int main()
+{
+    animal *ptr;
+    cat c;
+    camel c1;
+    fish f1;
+    penguin p1;
+    ptr=&c;
+    ptr->habitat();
+    ptr=&c1;
+    ptr->habitat();
+    ptr=&f1;
+    ptr->habitat();
+    ptr=&p1;
+    ptr->habitat();
+    return 0;
+}
+
+// QUESTION NO # 21
+
+/*Create a vehicle base class with attribute/variable name and
+color. It should have a derived class engine with a variable named engine_size.
+The engine_size should be pointer with proper initialization and deletion in
+constructor and destructor.
+● Using polymorphism, show which destructor needs to be virtual.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class vehicle
+{
+    private:
+    string name;
+    string color;
+    public:
+    vehicle()
+    {
+        cout <<"vehicle constructor" << endl;
+    }
+    virtual ~vehicle()
+    {
+        cout <<"vehicle destructor" << endl;
+    }
+};
+class engine:public vehicle
+{
+    int *engine_size;
+    public:
+    engine()
+    {
+        engine_size=new int[10];
+        cout <<"engine constructor" << endl;
+    }
+    ~engine()
+    {
+        delete[] engine_size;
+        cout <<"engine destructor" << endl;
+    }
+};
+int main()
+{
+    vehicle *ptr;
+    ptr=new engine();
+    delete ptr;
+    return 0;
+}
+
+
+// QUESTION NO # 22
+
+/*Create a class named week with an attribute named day of type string (private).
+● Now the getter and setter methods should be friend functions.
+● Get data from and to the console using the friend functions.*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+class week
+{
+    private:
+    string day;
+    public:
+    week(string e)
+    {
+        day = e;
+    }
+    friend void setdata(week &w);
+    friend void getdata(week &w);
+};
+void setdata(week &w)
+{
+    cin >> w.day;
+}
+void getdata(week &w)
+{
+    cout <<"Day:" << w.day << endl;
+}
+int main()
+{
+    week obj("monday");
+    setdata(obj);
+    getdata(obj);
+    return 0;
+}
+
+// QUESTION NO # 23
+
+/*Create a class named shape and another class named area (as friend class).
+● Area class should be a friend class in shape class.
+● Area class should have area calculating functions for circle and triangle.
+● Create instances of shape as circle and triangle in the main function.
+● Use area calculating functions of area class to calculate areas for circle object
+and triangle object.*/
+
+#include<iostream>
+using namespace std;
+class shape
+{
+    int radius;
+    public:
+    shape(int r)
+    {
+        radius = r;
+    }
+   friend class area;
+};
+class area
+{
+    int a=10;
+    public:
+    void calculatecircle()
+    {
+        cout <<"circle is " << (3.14)*a*a << endl;
+    }
+    void calculatetriangle()
+    {
+        int b,h;
+        cout <<"Enter the base" << endl;
+        cin >> b;
+        cout <<"Enter the height" << endl;
+        cin >> h;
+        cout <<"the triangle of the area is" << b*h/2 << endl;
+    }
+};
+int main()
+{
+    shape obj(4);
+    area abc;
+    abc.calculatecircle();
+    abc.calculatetriangle();
+    return 0;
+}
+
+
+// QUESTION NO # 24
+
+/*Suppose there is a cargo ship carrying containers, now each container can have
+different weight. Consider each container as a class and use operator overloading,
+calculate the total weight of the transported cargo.*/
+
+#include<iostream>
+using namespace std;
+class container
+{
+    private:
+    int w;
+    public:
+    container(int x)
+    {
+        w = x;
+    }
+    void operator+(container c)
+    {
+        int temp;
+        temp = w+c.w;
+    }
+    void show ()
+    {
+        cout <<"the sum of the containers " << w << endl;
+    }
+};
+int main()
+{
+    container x(30);
+    container x1(50);
+    container total(0);
+    total = x+x1;
+    total.show();
+    return 0;
+}
+
+// QUESTION NO # 25
+
+/*Create a counter class with incrementation and decrementation operator overloading.*/
+
+#include<iostream>
+using namespace std;
+class counter
+{
+    private:
+    int c;
+    public:
+    counter(int c1)
+    {
+        c=c1;
+    }
+    void operator++()
+    {
+        ++c;
+    }
+    void operator--()
+    {
+        --c;
+    }
+    void display()
+    {
+        cout <<"the value of C" << c << endl;
+    }
+};
+int main()
+{
+    counter c(4);
+    ++c;
+    c.display();
+    --c;
+    c.display();
+    return 0;
+}
+
+// QUESTION NO # 26
+
+/*Create a template function which takes any number type and prints its square
+root.*/
+
+#include<iostream>
+using namespace std;
+// this is template
+template<typename num>
+
+// a new function that gets number and return the number of sqaure
+void square(num x)
+{
+    cout <<"the square of the number" << x*x << endl;
+}
+int main()
+{
+    square(4);
+    square(4.1);
+    return 0;
+}
+
+// QUESTION NO # 27
+
+/*Create a template class named stack with push and pop functions and an array
+of size 10 (The array variables type should be dependent on template).
+● Now the push function should add items to the last empty index of the array (if
+the array is full it should print “there is no space in the stack”).
+● Pop function should remove the top element from the array (if the array is empty
+it should print “empty stack”).
+● Hint: create an index variable which should keep track of the stack level. Eg
+stack[index++]=pushedItem;
+Or
+return stack[index--];*/
+
+*#include<iostream>
+using namespace std;
+
+
+template<typename newtype>
+class function
+{
+    public:
+    newtype arr[10];
+    int position;
+    
+    function()
+    {
+        position=0;
+    }
+    void push(newtype x)
+    {
+        if(position<9)
+        {
+        arr[position++]=x;
+        }
+        else
+        {
+        cout<<"Stack is Full\n";
+        }
+    }
+
+    newtype pop()
+    {
+        if(position==0)
+        {
+            cout<<"Stack is empty\n" << endl;
+            return (newtype)0;
+        }
+        else
+        {  
+             position--;
+            cout<<position;
+            return arr[position];
+        }   
+    }
+};
+
+int main()
+{
+    function<double> o;
+    o.push(10);
+    o.push(20);
+    cout<<o.pop()<<endl;
+    cout<<o.pop()<<endl;
+    cout<<o.pop()<<endl;
+    cout<<o.pop()<<endl;
+    
+    return 0;
+}
+
+// QUESTION NO # 28
+
+/*● Note: Write each class code in a different header file.
+● Create a fruit class with a function named taste.
+● Fruit should have child classes named apple and grape.
+● In the main method/function use polymorphism by using a fruit pointer to have
+the type of its child classes.*/
+
+#include<iostream>
+#include "newheader.h"
+using namespace std;
+int main()
+{
+    apple a;
+    grape b;
+    fruit *f;
+    f=&a;
+    f->taste();
+    f=&b;
+    f->taste();
+    return 0;
+}
+
+// QUESTION NO # 29
+
+/*● Note: Write each class code in a different header file.
+● Create an interface named shape with a pure virtual function named area.
+● Shape should have a derived abstract class named D2_shape with a function
+named define which prints “This is a 2d shape”.
+● D2_shape should have 2 derived classes named square and cube.
+● Square and cube classes should have implementation for the function named
+area.*/
+
+#include<iostream>
+#include "1header.h"
+using namespace std;
+int main()
+{
+    shape *s;
+    Shape_2D a;
+    s=&a;
+    s->area();
+    Square s1;
+    s=&s1;
+    s->area();
+    Cube s3;
+    s=&s3;
+    s->area();
+
+    return 0;
+}
+
