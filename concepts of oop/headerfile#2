@@ -1,0 +1,35 @@
+// this is header file 
+
+#include<iostream>
+using namespace std;
+class shape
+{
+    public:
+    void virtual area()=0;
+};
+class Shape_2D:public shape
+{
+	public:
+		virtual void area()
+		{
+			cout<<"2D-SHAPE IS \t"<<endl;
+		}
+};
+class Square: public Shape_2D
+{
+	public:
+		void area()
+		{
+			cout<<"I AM SQUARE AND I HAVE 4 SIDE \t"<<endl;
+		}	
+};
+class Cube: public Shape_2D
+{
+		public:
+			void area()
+			{
+			cout<<"I AM CUBE AND I HAVE 3 SIDE \t"<<endl;
+			}
+};
+
+
