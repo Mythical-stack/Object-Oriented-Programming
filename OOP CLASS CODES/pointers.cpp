@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 using namespace std;
 // pointer function
 void pointer_test()
@@ -142,7 +142,7 @@ int main()
 	system ("pause");
 	return 0;
 	
-}*/
+}
 
 /*#include<iostream>
 using namespace std;
