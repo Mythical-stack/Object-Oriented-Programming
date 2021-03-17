@@ -1,0 +1,416 @@
+task no 1:
+#include<iostream>
+#include<string>
+using namespace std;
+class wheel
+{
+
+string state;
+
+public:
+
+    void set_wheel_state(string s)
+    {
+       state=s;
+    }
+
+    string get_wheel_state()
+    {
+        return state;
+    }
+};
+class car
+{
+
+wheel w[4];
+
+public:
+
+    void set_car_to_moving()
+    {
+        for(int i=0;i<4;i++)
+        {
+            w[i].set_wheel_state("Turning");
+        }
+    }
+
+    void set_car_to_stopped()
+    {
+        for(int i=0;i<4;i++)
+        {
+            w[i].set_wheel_state("Stopped");
+        }
+    }
+
+    void print_car_wheels_state()
+    {
+        cout<<"Car state: - \n";
+
+        for(int i=0;i<4;i++)
+        {
+            cout<<"Wheel "<<i<<" is "<<w[i].get_wheel_state()<<"-\n";
+        }
+    }
+
+};
+
+int  main()
+{
+    car C;
+    C.set_car_to_moving();
+    C.print_car_wheels_state();
+}
+
+
+task no 2:
+
+#include<iostream>
+#include<string>
+using namespace std;
+class person
+{
+
+public:
+    string name;
+    int age;
+
+public:
+    void setname()
+    {
+        cout<<"Enter the Name \n";
+        cin>>name;
+    }
+
+    void setage()
+    {
+        cout<<"Enter the Age \n";
+        cin>>age;
+    }
+    person* address()
+    {
+        return this;
+    }
+};
+
+class student :virtual public person
+{
+
+public:
+
+    int std_ID;
+    float gpa;
+
+    student(int id=0,float gp=0.0)
+    {
+         std_ID=id;
+        gpa=gp;
+    }
+
+    void setstdid(int id)
+    {
+       std_ID=id;
+    }
+
+    void setstdgpa(float gp)
+    {
+       gpa=gp;
+    }
+    student* address()
+    {
+        return this;
+    }
+
+};
+
+class employee :virtual public person
+{
+
+public:
+
+    int empl_ID;
+    float salary;
+    employee(int id=0,float sa=0)
+    {
+        empl_ID=id;
+        salary=sa;
+    }
+
+    void setemid(int id)
+    {
+        empl_ID=id;
+    }
+    void setemsalary(float sa)
+    {
+        salary=sa;
+    }
+    employee* address()
+    {
+        return this;
+    }
+};
+
+class functionality : public student ,public employee
+{
+public:
+
+void assign(string opt)
+ {
+     int I;
+     float G;
+     setname();
+     setage();
+
+     if(opt=="s")
+     {
+         cout<<"Enter the ID of Student \n";
+         cin>>I;
+         setstdid(I);
+         cout<<"Enter the GPA of Student \n";
+         cin>>G;
+         setstdgpa(G);
+     }
+
+     if(opt=="e")
+     {
+         cout<<"Enter the ID of Employee \n";
+         cin>>I;
+         setemid(I);
+         cout<<"Enter the Salary of Employee \n";
+         cin>>G;
+         setemsalary(G);
+     }
+ }
+
+    void change(string ch)
+    {
+        ;
+        int id,opt;
+        float s;
+        cout<<"Enter your Choices According to the Entries Below :\n";
+        cout<<"1. Change Name \n";
+        cout<<"2. Change Age \n";
+        cout<<"3. Change ID \n";
+        cout<<"4. Change Salary/GPA \n";
+        cin>>opt;
+        if(opt==1)
+        {
+            setname();
+        }
+        if(opt==2)
+        {
+            setage();
+        }
+        if(opt==3)
+        {
+            cout<<"Enter A New ID\n";
+            cin>>id;
+            if(ch=="e")
+            {
+                setemid(id);
+            }
+            if(ch=="s")
+            {
+                setstdid(id);
+            }
+        }
+        if(opt==4)
+        {
+            cout<<"Enter A New Salary/GPA\n";
+            cin>>s;
+            if(ch=="e")
+            {
+                setemsalary(s);
+            }
+            if(ch=="s")
+            {
+                setstdgpa(s);
+            }
+        }
+    }
+
+
+    void deleted()
+    {
+        name=" ";
+        age=0;
+        empl_ID=0;
+        salary=0;
+        gpa=0.0;
+        std_ID=0;
+    }
+
+    void display(string ch)
+    {
+        cout<<"Name = "<<name<<endl;
+        cout<<"Age = "<<age<<endl;
+        if(ch=="e")
+       {
+           cout<<"Employee's ID = "<<empl_ID<<endl;
+           cout<<"Employee's Salary = "<<salary<<endl;
+       }
+
+        if(ch=="s")
+       {
+           cout<<"Student's ID = "<<std_ID<<endl;
+           cout<<"Student's GPA = "<<gpa<<endl;
+       }
+    }
+
+    void choice()
+{   string ch;
+    int i=0;
+    cout<<"Enter Who's record you want to ADD(e/m)....\n\n";
+    cin>>ch;
+    assign(ch);
+   do
+    {
+
+    cout<<"Enter your Choices According to Options Given Below :\n";
+    cout<<"1. To Update Record \n";
+    cout<<"2. To Delete the Record \n";
+    cout<<"3. To Display the Record \n";
+    cout<<"4. For Exit  \n";
+    cin>>i;
+    if(i==1)
+        change(ch);
+    if(i==2)
+        deleted();
+    if(i==3)
+        display(ch);
+    if(i==4)
+        return;
+}while(i!=4);
+}
+
+    functionality* printaddress(void)
+    {
+
+        return this;
+    }
+
+};
+int main()
+{   person P,P1;
+    student S,S1;
+    employee E,E1;
+    functionality F,F1;
+    F.choice();
+    cout<<"Addresses of Person Class \n\n";
+    cout<<"Address of P :"<<P.address()<<endl;
+    cout<<"Address of P1 :"<<P1.address()<<endl;
+
+    cout<<"Addresses of Student Class \n\n";
+    cout<<"Address of S :"<<S.address()<<endl;
+    cout<<"Address of S1 :"<<S1.address()<<endl;
+
+    cout<<"Addresses of Employee Class \n\n";
+    cout<<"Address of E :"<<E.address()<<endl;
+    cout<<"Address of E1 :"<<E1.address()<<endl;
+
+    cout<<"Addresses of Functionality Class \n\n";
+    cout<<"Address of F :"<<F.printaddress()<<endl;
+    cout<<"Address of F1 :"<<F1.printaddress()<<endl;
+    return 0;
+}
+
+task no 3:
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class complex
+{
+public:
+    int real,img;
+    complex(int r=0,int i=0)
+    {   cout<<"COnstructor Created Successfully \n";
+        real=r;
+        img=i;
+    }
+    void set()
+    {
+        cout<<"Enter the 1st real number  = ";
+        cin>>real;
+        cout<<"Enter the 1st imginary number = ";
+        cin>>img;
+
+   }
+
+};
+
+
+class add:public complex
+{
+	public:
+		int sumreal,sumimg,real1,img1;
+		add(int r=0,int i=0,int r1=0,int i1=0)
+    {
+        real1=r;
+        img1=i;
+        sumreal=r1;
+        sumimg=i1;
+    }
+		void setcomplex()
+		{
+
+        cout<<"Enter the 2nd real number=";
+        cin>>real1;
+        cout<<"Enter the 2nd imginary number=";
+        cin>>img1;
+		}
+
+		friend class Difference;
+        void addC()
+        {
+            sumreal=real+real1;
+            sumimg=img+img1;
+            cout<<"The sum of complex number is ="<<sumreal<<"+"<<sumimg<<"i"<<endl;
+        }
+
+};
+
+class Difference
+{
+public:
+        int real2,img2;
+        Difference(int r=0, int i=0)
+        {
+            real2=r;
+            img2=i;
+        }
+        void set()
+        {
+            cout<<"Enter the 3rd real number =";
+            cin>>real2;
+            cout<<"Enter the 3rd imginary number =";
+            cin>>img2;
+        }
+
+
+        void diff(add  X)
+        {
+            int dreal,dimg;
+
+            dreal=X.real-real2;
+            dimg=X.img-img2;
+
+            if(dimg>=0 && dreal>=0)
+            cout<<"The difference of complex number is ="<<dreal<<"+"<<dimg<<"i";
+            else
+            cout<<"The difference of complex number is = "<<dreal<<dimg<<"i";
+        }
+};
+
+
+int main()
+{
+	add X;
+	Difference X2;
+	X.set();
+	X.setcomplex();
+	X.addC();
+	X2.set();
+	X2.diff(X);
+	return 0;
+}

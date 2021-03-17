@@ -1,0 +1,657 @@
+task no 1:
+#include<iostream>
+#include<string>
+using namespace std;
+
+class clockType
+{
+private:
+    int hours,minutes,seconds;
+public:
+        clockType(int h=0,int m=0,int s=0)
+        {
+            cout<<"Constructor Created \n";
+            hours=h;
+            minutes=m;
+            seconds=s;
+        }
+
+
+        clockType(clockType& C) //copy constructor
+        {
+            hours=C.hours;
+            minutes=C.minutes;
+            seconds=C.seconds;
+        }
+
+
+        void sethour()
+        {
+                    cout<<"Enter Hours : ";
+                    cin>>hours;
+                if(hours<0 || hours >24)
+                {
+                    cout<<"Please Enter Hours Between (0-24) !!!\nPlease Enter Again\n";
+                    sethour();
+                }
+        }
+
+        void setmin()
+        {
+                    cout<<"Enter Minutes : ";
+                    cin>>minutes;
+                if(minutes<0 || minutes >60)
+                {
+                    cout<<"Please Enter Minutes Between (0-60) !!!\nPlease Enter Again\n";
+                    setmin();
+                }
+        }
+
+        void setsec()
+        {
+                    cout<<"Enter Seconds : ";
+                    cin>>seconds;
+
+                if(seconds<0 || seconds >60)
+                {
+                    cout<<"Please Enter Seconds Between (0-60) !!!\nPlease Enter Again\n";
+                    setsec();
+                }
+        }
+
+        int geth()
+        {
+            return hours;
+        }
+
+
+        int getm()
+        {
+            return minutes;
+        }
+
+        int gets()
+        {
+            return seconds;
+        }
+
+        string operator ==(clockType& C)
+        {
+
+            string t;
+            if(C.hours==this->hours && C.minutes==this->minutes && C.seconds==this->seconds)
+            {
+                return t="True";
+            }
+            else
+                return t="False";
+        }
+
+
+        clockType& operator =(clockType& C1)
+        {
+            this->hours=C1.hours;
+            this->minutes=C1.minutes;
+            this->seconds=C1.seconds;
+            return *this;
+        }
+
+        void operator <<(clockType& C)
+        {
+            cout<<"Hours = "<<geth()<<endl;
+            cout<<"Minutes = "<<getm()<<endl;
+            cout<<"Seconds = "<<gets()<<endl;
+        }
+};
+
+int main()
+{
+    string S;
+    clockType C,C1;
+    C.sethour();
+    C.setmin();
+    C.setsec();
+    C1.sethour();
+    C1.setmin();
+    C1.setsec();
+
+    cout<<"Obj1 == Obj2     (T/F) ? "<<(C==C1)<<endl;
+    cout<<"Making OBJ1 = OBJ2 :\n";
+    C=C1;
+    cout<<"OBJ1 : \n\n";
+    C<<C;
+    cout<<"\nOBJ2 :\n\n";
+    C1<<C1;
+    return 0;
+}
+
+task no 2:
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class number
+{
+private:
+    int num;
+public:
+    number()
+    {
+        cout<<"Constructor Created !!!\n";
+        num=1;
+    }
+    void set()
+    {
+        int n;
+            cout<<"Enter A Number Within the Range of (1-100)\n";
+            cin>>n;
+            if(n>=1 && n<=100)
+                num=n;
+            else
+            {
+              cout<<"PLease Enter a Number Within the Range of (1-100) !!!:\n";
+              set();
+            }
+    }
+
+    int get()
+    {
+        return num;
+    }
+
+    void operator >(number& n)
+    {
+        if(get()>n.get())
+             cout<<get()<<" > "<<n.get()<<"= True "<<endl;
+        else
+            cout<<get()<<" > "<<n.get()<<"= False "<<endl;
+    }
+
+    void operator <(number& n)
+    {
+        if(get()<n.get())
+            cout<<get()<<" < "<<n.get()<<"= True "<<endl;
+        else
+           cout<<get()<<" < "<<n.get()<<"= False "<<endl;
+    }
+
+    void operator ==(number& n)
+    {
+        if(get()==n.get())
+            cout<<get()<<" == "<<n.get()<<"= True "<<endl;
+        else
+            cout<<get()<<" == "<<n.get()<<"= False "<<endl;
+    }
+
+    void operator !=(number& n)
+    {
+        if(get()!=n.get())
+            cout<<get()<<" != "<<n.get()<<"= True "<<endl;
+        else
+            cout<<get()<<" != "<<n.get()<<"= False "<<endl;
+    }
+
+    void operator =(number& n)
+    {
+        num=n.get();
+    }
+
+};
+
+int main()
+{
+    number n,n1;
+    n.set();
+    n1.set();
+    n>n1;
+    n<n1;
+    n==n1;
+    n!=n1;
+    cout<<"BEFORE USING  '=' OPERATOR : \n";
+    cout<<"Number 1 = "<<n.get()<<endl;
+    cout<<"Number 2 = "<<n1.get()<<endl;
+    n=n1;
+    cout<<"AFTER USING  '=' OPERATOR : \n";
+    cout<<"Number 1 = "<<n.get()<<endl;
+    cout<<"Number 2 = "<<n1.get()<<endl;
+    return 0;
+
+}
+
+
+task no 3:
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+
+
+class addressType
+{
+public:
+
+    string addresss,city,state,zip;
+
+    addressType()
+    {
+
+        addresss="     ";
+        city="  ";
+        state="  ";
+        zip="  ";
+    }
+
+    addressType(addressType &A)
+    {
+
+        addresss=A.addresss;
+        city=A.city;
+        state=A.state;
+        zip=A.zip;
+
+    }
+
+
+    void storeaddress(string ad,string c,string s,string z)
+    {
+        addresss=ad;
+        city=c;
+        state=s;
+        zip=z;
+    }
+
+
+    void printaddress()
+    {
+        cout<<addresss<<" "<<city<<" "<<state<<" "<<zip<<endl;
+    }
+
+
+};
+
+
+
+
+class personType
+{
+
+public:
+            string first,last;
+
+            personType(string First="    ", string Last="    ")
+            {
+                setName(First,Last);
+            }
+
+            void printname() const
+            {
+                 cout<<last<<" \t    "<<first;
+            }
+
+            void setName(string First,string Last)
+            {
+                 first=First;
+                 last=Last;
+            }
+
+            string getFirstName() const
+            {
+                 return first;
+            }
+
+            string getLastName() const
+            {
+                 return last;
+            }
+
+
+};
+
+
+class dateType
+{
+
+public:
+
+        int dday,dmonth,dyear;
+
+        dateType(int m=0, int d=0, int y=0)
+        {
+                setDate(m,d,y);
+        }
+        void setDate(int m, int d, int y)
+        {
+
+            dyear=y;
+            dmonth=m;
+            dday=d;
+
+        }
+        int getDay() const
+        {
+            return dday;
+        }
+        int getMonth() const
+        {
+            return dmonth;
+        }
+        int getYear() const
+        {
+            return dyear;
+        }
+
+        void printDate() const
+        {
+            cout << dmonth << "-" << dday << "-" << dyear;
+        }
+
+
+
+};
+
+
+
+class extPersonType:public addressType, public personType,public dateType
+{
+
+private:
+        string nickname;
+public:
+        string person;
+        int phone;
+
+        friend class myFriend;
+
+        extPersonType()
+        {
+            person="   ";
+            phone=0;
+        }
+
+        void store(string p,int ph)
+        {
+            person=p;
+            phone=ph;
+        }
+        void print()
+        {
+            cout<<person<<"     "<<phone;
+        }
+        void printall()
+        {
+            cout<<"Last Name  "<<"First Name  "<<"D.O.B\t   "<<"Relation\t";
+            cout<<"Ph. No.\t"<<"  Address  \n";
+            printname();
+            cout<<"      ";
+            printDate();
+            cout<<"   ";
+            print();
+            cout<<"      ";
+            printaddress();
+        }
+};
+
+
+
+class myFriend
+{
+
+public:
+
+    string name,address;
+    int phonenumber,age;
+
+    void setter(extPersonType &ext,string nick)
+    {
+        ext.nickname=nick;
+    }
+
+    string getter(extPersonType &ext)
+    {
+        return ext.nickname;
+    }
+
+};
+
+
+
+class addressBookType
+{
+public:
+        extPersonType ext[500];
+
+
+        friend void displayall(addressBookType &);
+
+        void input()
+        {
+            string f,l,strtaddress,z,general;
+            int d,m,y;
+
+            ifstream in;
+            in.open("DATA.txt");
+
+            for(int i=0;i<500;i++)
+            {
+                in>>f;
+                in>>l;
+                ext[i].setName(f,l);
+                in>>d>>m>>y;
+                ext[i].setDate(m,d,y);
+                in>>general>>d;
+                e[i].store(general,d);
+                in>>general>>f>>l>>z;
+                ext[i].storeaddress(general,f,l,z);
+            }
+            in.close();
+        }
+
+    void output()
+    {
+        for(int i=0;i<500;i++)
+        {
+            cout<<i<<"\n";
+            ext[i].printall();
+
+        }
+    }
+
+        void searchname()
+        {
+        int counter=0;
+        string f,n;
+        cout<<"ENTER the First Name to Search : ";
+        cin>>f;
+        cout<<"Enter the Last Name To Search : ";
+        cin>>n;
+        cout<<"Person(s) are:\n\n\n";
+            for(int i=0;i<500;i++)
+            {
+                if((f==ext[i].getFirstName()) && (n==ext[i].getLastName()))
+                {
+                        cout<<" D.O.B  : ";
+                        ext[i].printDate();
+                        cout<<endl<<" Relation And Phone No is : ";
+                        ext[i].print();
+                        cout<<endl<<" Address is : ";
+                        ext[i].printaddress();
+                        cout<<endl<<endl;
+                        counter++;
+                }
+            }
+                if(counter==0)
+                cout<<"Person Not Found !!! \n";
+        }
+
+
+
+        void searchl()
+        {
+        int counter=0;
+        string n;
+
+        cout<<"Enter the Last Name To Search : ";
+        cin>>n;
+        cout<<"Person(s) With Last Name "<<n<<" are:\n\n\n";
+            for(int i=0;i<500;i++)
+            {
+
+                if(n==ext[i].getLastName())
+                {
+                        cout<<" D.O.B  : ";
+                        ext[i].printDate();
+                        cout<<endl<<" Relation And Phone No is : ";
+                        ext[i].print();
+                        cout<<endl<<" Address is : ";
+                        ext[i].printaddress();
+                        cout<<endl<<endl;
+                        counter++;
+                }
+            }
+                if(counter==0)
+                cout<<"Person Not Found !!! \n";
+        }
+
+        void searchmonth()
+        {
+            int m,counter=0;
+
+            cout<<"Enter The Month You Want to Search For: \n";
+            cin>>m;
+            cout<<"Name(s) of Person(s) with Same Month Of Birth are \n\n\n";
+            cout<<"Last Name   "<<"First Name  \n";
+            for(int i=0;i<500;i++)
+            {
+                if(m==ext[i].getMonth())
+                {
+                        ext[i].printname();
+                        cout<<endl;
+                        counter++;
+                }
+            }
+            if(counter==0)
+                cout<<"Not Found !!! \n";
+        }
+
+        void searchlast()
+        {
+            string n,l;
+            int i,j,counter=0,count=0;
+            cout<<"Enter the First Last Name : \n";
+            cin>>n;
+            cout<<"Enter the Second Last Name : \n";
+            cin>>l;
+
+            for(i=0;i<500;i++)
+            {
+                if(n==ext[i].getLastName())
+                {
+                    j=i;
+                }
+            }
+
+                j=j+1;
+            for(int k=j;k<500;k++)
+            {
+                if(l==ext[k].getLastName())
+                    {
+                        count=k;
+                        break;
+                    }
+            }
+            for(j;j<count;j++)
+                {
+                     if(counter==0)
+                {
+
+                    cout<<"Name(s) Between the given Range are : \n\n";
+                    cout<<"Last Name  "<<"First Name  \n";}
+                    ext[j].printname();
+                    cout<<endl;
+                    counter++;
+
+                }
+
+            if(counter==0)
+            cout<<"Not Found !!! \n";
+
+        }
+
+        void search()
+        {
+        int counter=0;
+        string n;
+        cout<<"Enter Your Num According to the Choices Below : \n";
+        cout<<"1. For Searching of Family Members Press fa\n";
+        cout<<"2. For Searching of Friends Press fn";
+        cout<<"3. For Searching of Business Associates Press b\n";
+        cin>>n;
+        cout<<"Name(s) are : \n";
+        cout<<"Last Name  "<<"First Name  \n";
+        for(int i=0;i<500;i++)
+            {
+                if((n=="fa")&&(ext[i].person=="Family"))
+                {
+                            ext[i].printname();
+                            cout<<endl;
+                            counter++;
+                }
+
+                if((n=="fn")&&(ext[i].person=="Friend"))
+                {
+                            ext[i].printname();
+                            cout<<endl;
+                            counter++;
+                }
+
+                if((n=="b")&&(ext[i].person=="Business"))
+                {
+                            ext[i].printname();
+                            cout<<endl;
+                            counter++;
+                }
+            }
+            if(counter==0)
+            cout<<"Nothing Found !!!\n";
+        }
+
+
+        void options()
+        {   int i;
+            do{
+            cout<<"Enter Nos. According to Choices Below : \n\n";
+            cout<<"1. Search for a person by last name. \n";
+            cout<<"2. Print the address, phone number, and date of birth of a given person.\n";
+            cout<<"3. Print the names of the people whose birthdays are in a given month. \n";
+            cout<<"4. Print the names of all the people between two last names.  \n";
+            cout<<"5. Print the names of all family members, friends, or business associates.\n";
+            cout<<"6. To Print the Whole Address Book\n";
+            cout<<"7. Exit \n";
+            cin>>i;
+            e[i]
+            if(i==1)
+            searchl();
+            if(i==2)
+            searchname();
+            if(i==3)
+            searchmonth();
+            if(i==4)
+            searchlast();
+            if(i==5)
+            search();
+            if(i==6)
+            output();
+            }while(i!=7);
+
+        }
+};
+
+
+int main()
+{   char opt;
+    addressBookType A;
+    A.input();
+    A.options();
+    return 0;
+}

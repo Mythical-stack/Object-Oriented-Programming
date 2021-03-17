@@ -1,0 +1,442 @@
+task no 1:
+
+#include<iostream>
+using namespace std;
+class Enemy
+{
+public:
+	static int Counter;
+	Enemy()
+	{
+        Counter++;
+        cout<<"Enemy Created Successfully \n";
+	}
+
+    static void display()
+    {
+        cout<<"Number Of Total Enemy Objects Available are: "<<Counter<<endl;
+    }
+
+	~Enemy()
+	{
+	    cout<<"Enemy Object Destroyed Successfully!!!\n";
+		Counter--;
+	}
+};
+int Enemy::Counter = 0;
+
+int main()
+{
+	Enemy* Pntr1;
+	Enemy* Pntr2;
+	Enemy* Pntr3;
+
+	Pntr1 = new Enemy;
+	Enemy::display();
+	Pntr2 = new Enemy;
+	Enemy::display();
+	Pntr3 = new Enemy;
+    Enemy::display();
+	delete Pntr2;
+	delete Pntr3;
+    Enemy::display();
+    delete Pntr1;
+	return 0;
+}
+
+task no 2:
+
+#include<iostream>
+#include<string>
+using namespace std;
+class stringType
+{
+	public:
+		string str1,str2;
+		stringType()
+		{
+		    str1="  ";
+		    str2=str1;
+		}
+	void setvalues(string stri1,string stri2)
+	{
+		str1=stri1;
+		str2=stri2;
+	}
+	void printvalues()
+	{
+		cout<<"First String is "<<str1<<endl;
+		cout<<"Second String is "<<str2<<endl;
+	}
+	string concatenate(string s1, string s2)
+	{
+		return s1+s2;
+	}
+	int maxlength()
+	{   int counter=0,counter1=0;
+
+	    for(int i=0;str1[i]!='\0';i++)
+	    {
+	            counter++;
+	    }
+	    for(int j=0;str2[j]!='\0';j++)
+	    {
+	            counter1++;
+	    }
+	    if(counter>counter1)
+	    return counter;
+	    else
+            return counter1;
+	}
+	 int searchWord(string word)
+	 {  int no=0;
+	     if(word==str1)
+          no=1;
+          if(word==str2)
+            no=2;
+          else
+            no=0;
+            return no;
+	 }
+	 int searchChar(char ch)
+	 { int n=0;
+	     for(int i=0;str1[i]!='\0';i++)
+        {
+            if(ch==str1[i])
+            {
+                return n=1;
+            }
+        }
+        for(int j=0;str2[j]!='\0';j++)
+        {
+            if(ch==str2[j])
+            {
+                return n=2;
+            }
+        }
+	 }
+	 void copy(string source, string destination)
+	 {
+	     destination=source;
+	 }
+	 int compare(string s1,string s2)
+	 {
+	    if(s1==str1 && s2==str2)
+            return 1;
+        if(s1==str1 && s2!=str2)
+            return 2;
+        if(s1!=str1 && s2==str2)
+            return 3;
+        if(s1!=str1 && s2!=str2)
+            return 4;
+	 }
+};
+int main()
+{
+    stringType S;
+    char ch;
+    string s1,s2,s3,s4;
+
+
+
+    cout<<"\n\nEnter the Value of First String \n";
+    cin>>s3;
+    cout<<"Enter the Value of Second String \n";
+    cin>>s4;
+    S.setvalues(s3,s4);
+
+
+  cout<<"Maximum Length in Both the Words is "<<S.maxlength()<<endl;
+
+
+            cout<<"Enter the Character you want to search \n";
+            cin>>ch;
+    if(S.searchChar(ch)==1)
+            cout<<"Character Found Successfully in "<<S.str1<<endl;
+    if(S.searchChar(ch)==2)
+            cout<<"Character Found Successfully in "<<S.str2<<endl;
+
+
+
+            cout<<"Enter the word you want to search \n";
+            cin>>s1;
+    if(S.searchWord(s1)==1)
+        cout<<"Word is Equal to First Word \n";
+    if(S.searchWord(s1)==2)
+        cout<<"Word is Equal to Second Word \n";
+    if(S.searchWord(s1)==0)
+        cout<<"Word Not Found!!! \n";
+
+
+            cout<<"Enter the First Word you want to compare \n";
+            cin>>s1;
+            cout<<"Enter the Second Word you want to compare \n";
+            cin>>s2;
+
+    if(S.compare(s1,s2)==1)
+            cout<<"Both Words are the same \n"<<endl;
+
+    if(S.compare(s1,s2)==2)
+            cout<<"Only First Word is Equal\n"<<endl;
+
+    if(S.compare(s1,s2)==3)
+            cout<<"Only Second Word is Equal\n"<<endl;
+
+    if(S.compare(s1,s2)==4)
+            cout<<"Both are not equal\n"<<endl;
+
+
+    S.copy(s1,s2);
+
+
+    return 0;
+}
+
+task no 3:
+
+#include<iostream>
+using namespace std;
+class twoDArray
+{
+	public:
+	int size =  5;
+	static int matrix[5][5];
+	public:
+	void Initialize()
+	{
+		cout<<"Enter any Random values in array=";
+		for(int i=0;i<size;i++)
+		{
+			for(int j=0;j<size;j++)
+			{
+				cin>>matrix[i][j];
+			}
+		}
+    }
+	void print()
+	{
+	  	for(int i=0;i<size;i++)
+		{
+			for(int j=0;j<size;j++)
+			{
+				cout<<matrix[i][j]<<"    ";
+			}
+			cout<<endl;
+		}
+	}
+	void isSymmetry()
+	{  int matrix2[size][size];
+		int counter=0;
+	      for(int i=0;i<size;i++)
+		{
+			for(int j=0;j<size;j++)
+			{
+				if(matrix2[i][j]==matrix[i][j])
+				{
+					counter++;
+				}
+			}
+		}
+		if(counter==25)
+		{
+			cout<<"The matrix is Symmetric.";
+		}
+		else
+		{
+
+			cout<<"The matrix is non-symmetric.";
+		}
+	}
+	void Transpose()
+	{ int matrix2[size][size];
+		cout<<endl<<"After Transpose="<<endl;
+		for(int i=0;i<size;i++)
+		{
+			for(int j=0;j<size;j++)
+			{
+				matrix2[j][i]=matrix[i][j];
+			}
+		}
+		for(int i=0;i<size;i++)
+		{
+			for(int j=0;j<size;j++)
+			{
+				cout<<matrix2[i][j]<<"\t";
+			}
+			cout<<endl;
+		}
+	}
+	twoDArray multiply(twoDArray c1, twoDArray c2)
+	{ twoDArray c3;
+	int ma3[5][5]={(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)};
+
+            for(int i=0;i<size;i++)
+		    {
+			for(int j=0;j<size;j++)
+			{
+            for(int z=0;z<size;z++)
+				ma3[i][j]+=c1.matrix[i][z]* c2.matrix[z][j];
+            }
+		    }
+cout<<"Multiplication is : "<<endl;
+		    for(int i=0;i<size;i++)
+        {
+            for(int j=0;j<size;j++)
+            {c2.matrix[i][j]=ma3[i][j];
+            cout<<c2.matrix[i][j]<<"   ";}
+            cout<<endl;}
+		 return c2;
+	}
+};
+int twoDArray::matrix[5][5]={(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)};
+int main()
+{
+	twoDArray c1,c2,c3;
+	c1.Initialize();
+	c1.print();
+	c1.Transpose();
+	c1.isSymmetry();
+	c2.Initialize();
+	c2.multiply(c1,c2);
+	return 0;
+}
+
+task no 4:
+
+#include<iostream>
+#include<string>
+using namespace std;
+class listType
+{public:
+	int* arr;
+	int size;
+	listType()
+	{
+		set();
+		arr = new int[size];
+		for (int i = 0; i < size; i++)
+		{
+			*(arr+i) = 0;
+		}
+	}
+	void set()
+	{
+	    cout<<"Enter the Size of Array ";
+	    cin>>size;
+	}
+	~listType()
+	{
+		delete[] arr;
+	}
+	bool isEmptyList() const
+	{  int counter=0;
+            bool True;
+            bool False;
+	    for(int i=0;i<size;i++)
+		{if (*(arr+i) == 0)
+		{
+			counter++;
+		}}
+		if(counter==size)
+            return True;
+        else
+            return False;
+	}
+	bool isFullList() const
+	{   int counter=0;
+	bool True;
+            bool False;
+	     for(int i=0;i<size;i++)
+		{
+		if (*(arr+i) != 0)
+		{   counter++;}
+	}
+	if(counter==size)
+            return True;
+        else
+            return False;
+    }
+	int search(int searchItem) const
+	{
+		for (int i = 0; i < size; i++)
+		{
+			if (*(arr+i) == searchItem)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+	}
+	void insert(int newElement)
+	{
+		size++;
+		arr[size] = newElement;
+	}
+	void remove(int remove)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			if (*(arr+i) == remove)
+			{ *(arr+i)=0;}}
+	}
+	void printList() const
+	{
+		for (int i = 0; i < size; i++)
+		{
+			cout << *(arr+i) << endl;
+		}
+	}
+};
+int main()
+{
+	int num;
+	listType l;
+	cout << l.isEmptyList()<<endl;
+	cout << l.isFullList()<<endl;
+	cout<<"Search " <<l.search(0)<<endl;
+	l.insert(5);
+	l.remove(0);
+	l.printList();
+	return 0;
+}
+
+task no 5:
+
+#include<iostream>
+using namespace std;
+class Parent
+{
+   public:
+         Parent()
+		 {
+		 	cout<<"I am Parent, I got a new life."<<endl;
+		 }	
+		 ~Parent()
+		 {
+		 	cout<<"I am Parent, I am going to die."<<endl;
+		 }
+};
+class child: public Parent
+{
+	public:
+		child()
+		 {
+		 	cout<<"I am child, I got a new life."<<endl;
+		 }	
+		 ~child()
+		 {
+		 	cout<<"I am child, I am going to die."<<endl;
+		 }
+};
+int main()
+{
+	child *ptr=new child;
+	delete ptr;
+	return 0;
+}
+
+task no 6:
+

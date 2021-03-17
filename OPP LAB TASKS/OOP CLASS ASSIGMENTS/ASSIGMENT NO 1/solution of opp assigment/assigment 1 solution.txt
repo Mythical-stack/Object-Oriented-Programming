@@ -1,0 +1,170 @@
+#include<iostream>
+#include<string>
+using namespace std;
+struct players				//Structure
+{ 	
+		string frstname;
+		string lastname;
+ 		int ranking,goalscored,age;
+};					//struct end
+		void assign(players player1[],int &i,int& entry) 	//assignment ftn
+{ 			if(entry==1)							//user enters 1
+	{	cout<<"Enter a new First Name ";
+		cin>>player1[i].frstname;
+		cout<<"Successfully Updated \n";
+	}
+			if(entry==2)							//user enters 2
+	{	cout<<"Enter a new Last Name ";
+		cin>>player1[i].lastname;
+		cout<<"Successfully Updated \n";
+	}
+			if(entry==3)							//user enters 3
+	{	cout<<"Enter a new Age ";
+		cin>>player1[i].age;
+		cout<<"Successfully Updated \n";
+	}
+			if(entry==4)							//user enters 4
+	{	cout<<"Enter a new Ranking ";
+		cin>>player1[i].ranking;
+		cout<<"Successfully Updated \n";
+	}
+			if(entry==5)							//user enters 5
+	{	cout<<"Enter a New No. of  Goals Scored ";
+		cin>>player1[i].goalscored;
+		cout<<"Successfully Updated \n";
+	}
+		cout<<endl;
+}												//assign ftn end
+		void New_player(players player1[],int *n)			//new player entry ftn
+{			cout<<"Enter The First name of the Player ";  
+			cin>>player1[*n].frstname;
+			cout<<"Enter The Last name of the Player ";
+			cin>>player1[*n].lastname;
+			cout<<"Enter The Age of the Player ";
+			cin>>player1[*n].age;
+			cout<<"Enter The Rank of the Player ";
+			cin>>player1[*n].ranking;
+			cout<<"Enter The No. of Goals Scored By the "<<player1[*n].frstname<<" ";
+			cin>>player1[*n].goalscored;
+			cout<<endl<<endl;
+}
+		void update(players player1[],int *n) 			//update ftn
+{			string name,lname;
+			int entry,entry1,counter[5]={0,0,0,0,0};
+			cout<<"Enter num based on which entry of the player you want to change \n";
+			cout<<"1. For Changing First Name \n"<<"2. For Changing Last Name \n";
+			cout<<"3. For Changing Age \n"<<"4. For Changing Rank \n";
+			cout<<"5. For Changing No. of Goals Scored \n";
+			cin>>entry;
+			cout<<"Enter the First Name of the Player Who's Record You want to Update ";
+			cin>>name;
+			cout<<"Now, Enter the Last Name ";
+			cin>>lname;
+			for(int i=0;i<*n;i++)
+	{		if(name==player1[i].frstname && lname==player1[i].lastname) 			//if Firstname and Last Name matches
+		{		assign(player1,i,entry);
+				counter[1]++;
+		}				
+	}
+			if(counter[1]!=1 ) 					//if not 
+		{ 	cout<<"No Player in the Given List has "<<name<<" "<<lname<<" as Their Name \n";
+			cout<<"So, Kindly Enter the Ranking of the Player Who's Record You want to Update ";
+			cin>>entry1;
+			for(int i=0;i<*n;i++)
+	{		if(entry1==player1[i].ranking)
+		{	assign(player1,i,entry);
+			counter[2]++;
+		}
+	}
+			if(counter[2]!=1)
+		{	cout<<"No Player in the Given List has "<<entry1<<" as their ranking \n";
+			cout<<"So, Kindly Enter the Age of the Player Who's Record You want to Update ";
+			cin>>entry1;
+			for(int i=0;i<*n;i++)
+	{		if(entry1==player1[i].age)
+		{	assign(player1,i,entry);
+			counter[3]++;
+		}
+	}
+			if(counter[3]!=1 ) 
+		{ 	cout<<"No Player in the Given List has "<<entry1<<" as their age \n";
+			cout<<"So, Kindly Enter the No. of Goal scored by the Player Who's Record You want to Update ";
+			cin>>entry1;
+			for(int i=0;i<*n;i++)
+	{		if(entry1==player1[i].goalscored)
+		{	assign(player1,i,entry);
+			counter[4]++;
+		}
+	}
+			if(counter[4]!=1 && counter[3]!=1 && counter[2]!=1 && counter[1]!=1 && counter[0]!=1)
+			cout<<"Sorry, No Player Matches the Current Data ";
+		}
+}}cout<<endl<<endl;}
+
+
+			void search(players player1[],int *n) 			//search ftn
+{  				 	int counter=0;
+					string name,lname;
+					cout<<"Enter the First Name of the Player Who's Record You want to Search ";
+					cin>>name;
+					cout<<"Now enter the Last Name ";
+					cin>>lname;
+		
+					for(int i=0;i<*n;i++)
+{					if(name==player1[i].frstname && lname==player1[i].lastname) 			//if first and last name matches
+				{ 	cout<<"First Name of Player is "<<player1[i].frstname<<endl;
+					cout<<"Last Name of Player is "<<player1[i].lastname<<endl;
+					cout<<"Age of Player is "<<player1[i].age<<endl;
+					cout<<"Ranking of Player is "<<player1[i].ranking<<endl;
+					cout<<"No. of Goals Scored By Player is "<<player1[i].goalscored<<endl;
+					counter++;
+				} 
+}					if(counter!=1)
+ 					cout<<"No, Player in the Given List Matches the Current Given Name \n";
+					cout<<endl<<endl;
+}
+
+	void display(players player1[],int *n)
+{  			int i;
+			cout<<" Displaying the data of Players \n";
+			for(int i=0;i<*n;i++)
+		{
+		cout<<"First Name of Player is "<<player1[i].frstname<<endl;
+		cout<<"Last Name of Player is "<<player1[i].lastname<<endl;
+		cout<<"Age of Player is "<<player1[i].age<<endl;
+		cout<<"Ranking of Player is "<<player1[i].ranking<<endl;
+		cout<<"No. of Goals Scored By Player is "<<player1[i].goalscored<<endl;
+		cout<<endl<<endl;
+		}
+}
+int main ()
+{  			int no,n1,counte=0;
+			int* n=&n1,*counter=&counte;
+cout<<"Enter the No. of players you want to have in the Team ";
+cin>>n1;
+		players player1[n1];
+{New_player(player1,counter);
+*counter=*counter+1;
+}
+do{	
+		cout<<"Enter the Desired Num according to the task you want to be performed"<<endl;
+		cout<<"1. Add a New Player "<<endl<<"2. Update a Player's Record "<<endl<<"3. Search For a Player "<<endl<<"4. Display the complete list of Players ";
+		cout<<endl<<"5. Exit the Program "<<endl;
+		cin>>no;
+		if(no==1 )
+	{	if(*counter>=n1) 
+		cout<<"No. of Players Exceed the given limit \n";
+				if(*counter<n1)
+			{   New_player(player1,counter);
+				*counter=*counter+1;
+			}
+	}
+		if(no==2)
+		update(player1,n);
+		if(no==3)
+		search(player1,n);
+		if(no==4)
+		display(player1,n);
+	}while(no!=5);
+return 0;
+}

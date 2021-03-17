@@ -1,0 +1,236 @@
+#include<iostream>
+#include<string>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+class Enemy
+{
+public:
+    string name,color,power;
+    double size,health;
+    void Destroy()
+	{
+            cout<<name<<" is Destroyed \n";
+    }
+    virtual void set()=0;
+    virtual void Attack(Army &A)=0;
+	virtual void Capture(string n)=0;
+	virtual void hitsrecieved(string p,string bodypart)=0;
+};
+class alien:public Enemy
+{
+public:
+    alien()
+    {
+        set();
+    }
+    void set()
+    {
+        cout<<"Enter the Name of the Alien ";
+        cin>>name;
+        color="Blue";
+        cout<<"Enter the size of the Alien ";
+        cin>>size;
+        power="!";
+        health=1.0;
+    }
+    void Attackair(AirDefence &A)
+    {
+        cout<<"Attacking Air Defenders !!!\n";
+        A.hit("!");
+    }
+    void Attack(Army &A)
+    {
+        cout<<"Attacking Ground Defenders !!!\n";
+        A.hit("!");
+    }
+    void hitsrecieved(string p,string bodypart)
+    {
+        if((p==":"||p=="^") && bodypart=="head")
+        {
+            health--;
+        }
+        if((p==":" || p=="^") && bodypart!="head")
+        {
+            health-=0.5;
+        }
+        if(health<=0.0)
+        {
+            Destroy();
+        }
+    }
+    void capture(string n)
+    {
+        cout<<n<<" Captured By "<<name<<endl;
+    }
+};
+
+class monster:public Enemy
+{
+        void set()
+    {
+        cout<<"Enter the Name of the Monster ";
+        cin>>name;
+        color="Dark Brown";
+        cout<<"Enter the size of the Monster ";
+        cin>>size;
+        power="?";
+        health=5.0;
+    }
+    void Attack(Army &A)
+    {
+        cout<<"Attacking Ground Defenders !!!\n";
+        A.hit(power);
+    }
+    void hitsrecieved(string p,string bodypart)
+    {
+        if((p==":"||p=="^") && bodypart=="head")
+        {
+            health--;
+        }
+        if((p==":" || p=="^") && bodypart!="head")
+        {
+            health-=0.5;
+        }
+        if(health<=0.0)
+        {
+            Destroy();
+        }
+    }
+    void capture(string n)
+    {
+        cout<<n<<" Captured By "<<name<<endl;
+    }
+};
+
+
+
+class Defenders
+{
+public:
+    string name,color,power;
+    double size,health;
+    int counter,c1;
+    Defenders()
+    {
+        counter=0;
+        c1=0;
+        health=3.0;
+    }
+    int random()
+    {
+        srand(time(NULL));
+        return (rand() % 100) ;
+    }
+    void Destroy()
+	{
+            cout<<name<<" is Destroyed \n";
+    }
+    void Capture(string n)
+	{
+	    cout<<n<<" has been Captured by "<<name<<endl;
+	}
+	void headshotM(monster &M)
+	{
+	    M.hitsrecieved(":","head");
+	}
+	void shotM(monster &M)
+	{
+	    M.hitsrecieved(":","legs");
+	}
+	void headshotA(alien &A)
+	{
+	    A.hitsrecieved(":","head");
+	}
+	void shotA(alien &A)
+	{
+	    A.hitsrecieved(":","legs");
+	}
+    void Attack(monster &M)
+    {
+        int c;
+        c=random();
+        if(counter==0)
+        {cout<<"Attacking Monsters !!!\n";}
+        else
+            cout<<"Shooting "<<power<<endl;
+            if(c%2==0)
+        headshotM(M);
+        else
+            shotM(M);
+        counter++;
+    }
+
+    void Attackalien(alien &A)
+    {
+        int c;
+        c=random();
+        if(c1==0)
+        {cout<<"Attacking Aliens !!!\n";}
+        else
+            cout<<"Shooting "<<power<<endl;
+        if(c%2==0)
+        headshotA(A);
+        else
+            shotA(A);
+        c1++;
+    }
+    virtual void hit(string p)=0;
+    virtual void set()=0;
+};
+
+
+class Army:public Defenders
+{
+public:
+    int counter,c1;
+    Army()
+    {
+        set();
+    }
+    void set()
+    {
+        cout<<"Enter the Name of Your Land Defender ";
+        cin>>name;
+        cout<<"Enter the size of Your Land Defender ";
+        cin>>size;
+        color="green";
+        power=":";
+    }
+    void hit(string p)
+    {
+        if(p=="!")
+            health--;
+        if(p=="?")
+            health-=1.2;
+    }
+};
+
+
+
+
+class AirDefence:public Defenders
+{
+public:
+    int counter,c1;
+    AirDefence()
+    {
+        set();
+    }
+    void set()
+    {
+        cout<<"Enter the Name of Your Land Defender ";
+        cin>>name;
+        cout<<"Enter the size of Your Land Defender ";
+        cin>>size;
+        color="sky blue";
+        power="^";
+    }
+    void hit(string p)
+    {
+        if(p=="!")
+            health--;
+        if(p=="?")
+            health-=1.2;
+    }
+};
